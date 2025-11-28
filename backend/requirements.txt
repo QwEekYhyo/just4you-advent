@@ -1,0 +1,5 @@
+sqlalchemy
+Flask
+argon2-cffi
+pyjwt
+black
