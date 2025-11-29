@@ -1,51 +1,181 @@
-# API
+# **API Documentation**
 
-## `POST /login`
-Description: Log in using credentials
-Content-Type: application/json
-body:
+## **POST `/login`**
+
+### Description
+
+Log in using user credentials.
+
+### Request
+
+| Field        | Value              |
+| ------------ | ------------------ |
+| Method       | `POST`             |
+| URL          | `/login`           |
+| Auth         | None               |
+| Content-Type | `application/json` |
+
+**Body**
+
 ```json
 {"username":"logan","password":"pwd"}
 ```
-returns: JWT token
 
-## `GET /me`
-Description: Get info of logged in user
-Authorization: Bearer
-returns: User model
+### Response
 
-## `GET /my-calendar`
-Description: Get calendar of logged in user
-Authorization: Bearer
-returns: Calendar model
+| Returns   |
+| --------- |
+| JWT token |
 
-## `GET /images/<day>`
-Description: Get image associated with calendar day=<day>
-Authorization: Bearer
-returns: binary of image
+---
 
-## `POST /register` (admin-only)
-Description: Register a new user
-Authorization: Bearer
-Content-Type: application/json
-body:
+## **GET `/me`**
+
+### Description
+
+Fetch info about the authenticated user.
+
+### Request
+
+| Field  | Value                 |
+| ------ | --------------------- |
+| Method | `GET`                 |
+| URL    | `/me`                 |
+| Auth   | Bearer token required |
+
+### Response
+
+| Returns    |
+| ---------- |
+| User model |
+
+---
+
+## **GET `/my-calendar`**
+
+### Description
+
+Get the calendar associated with the authenticated user.
+
+### Request
+
+| Field  | Value                 |
+| ------ | --------------------- |
+| Method | `GET`                 |
+| URL    | `/my-calendar`        |
+| Auth   | Bearer token required |
+
+### Response
+
+| Returns        |
+| -------------- |
+| Calendar model |
+
+---
+
+## **GET `/images/<day>`**
+
+### Description
+
+Fetch the image associated with a specific calendar day.
+
+### Request
+
+| Field  | Value                 |
+| ------ | --------------------- |
+| Method | `GET`                 |
+| URL    | `/images/<day>`       |
+| Auth   | Bearer token required |
+
+### Response
+
+| Returns           |
+| ----------------- |
+| Binary image data |
+
+---
+
+## **POST `/register`** (admin-only)
+
+### Description
+
+Register a new user.
+
+### Request
+
+| Field        | Value                         |
+| ------------ | ----------------------------- |
+| Method       | `POST`                        |
+| URL          | `/register`                   |
+| Auth         | Bearer token (admin required) |
+| Content-Type | `application/json`            |
+
+**Body**
+
 ```json
-{"username":"logan","password":"pwd","name":"Logan","calendar_id":1,"is_admin":"false"}
+{
+  "username": "logan",
+  "password": "pwd",
+  "name": "Logan",
+  "calendar_id": 1,
+  "is_admin": "false"
+}
 ```
-returns: created User
 
-## `POST /calendars` (admin-only)
-Description: Add a new calendar
-Authorization: Bearer
-Content-Type: multipart/form-data
-form:
-```
-name=New Calendar
-images=@/path/to/zip/archive
-```
-returns: created Calendar
+### Response
 
-## `GET /calendars/<id>` (admin-only)
-Description: Get calendar with id=<id>
-Authorization: Bearer
-returns: Calendar model
+| Returns      |
+| ------------ |
+| Created User |
+
+---
+
+## **POST `/calendars`** (admin-only)
+
+### Description
+
+Create a new calendar.
+
+### Request
+
+| Field        | Value                         |
+| ------------ | ----------------------------- |
+| Method       | `POST`                        |
+| URL          | `/calendars`                  |
+| Auth         | Bearer token (admin required) |
+| Content-Type | `multipart/form-data`         |
+
+**Form Data**
+
+| Field    | Type       | Example                 |
+| -------- | ---------- | ----------------------- |
+| `name`   | text       | `New Calendar`          |
+| `images` | file (zip) | `@/path/to/zip/archive` |
+
+### Response
+
+| Returns          |
+| ---------------- |
+| Created Calendar |
+
+---
+
+## **GET `/calendars/<id>`** (admin-only)
+
+### Description
+
+Get a calendar by its ID.
+
+### Request
+
+| Field  | Value                         |
+| ------ | ----------------------------- |
+| Method | `GET`                         |
+| URL    | `/calendars/<id>`             |
+| Auth   | Bearer token (admin required) |
+
+### Response
+
+| Returns        |
+| -------------- |
+| Calendar model |
