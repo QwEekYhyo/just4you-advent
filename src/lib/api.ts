@@ -12,7 +12,6 @@ export type Calendar = {
 };
 
 export async function getMyCalendar(token: string): Promise<Calendar> {
-    console.log(token);
     const response = await fetch(BACKEND_URL + "/my-calendar", {
         method: "GET",
         headers: {

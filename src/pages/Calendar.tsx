@@ -84,7 +84,6 @@ const Calendar = () => {
       },
       enabled: !!user,
   });
-  if (isSuccess) console.log(data);
 
   const canOpenMore = openedToday < DAILY_LIMIT;
   const remaining = DAILY_LIMIT - openedToday;
@@ -128,6 +127,7 @@ const Calendar = () => {
             day={day}
             imageUrl={getImageForDay(day)}
             style={boxPositions[day - 1]}
+            isDbOpen={isSuccess && data.days[day - 1].is_open}
             canOpen={canOpenMore}
             onOpen={handleBoxOpen}
           />

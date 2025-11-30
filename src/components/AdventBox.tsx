@@ -1,16 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface AdventBoxProps {
   day: number;
   imageUrl: string;
   style: React.CSSProperties;
+  isDbOpen: boolean;
   canOpen: boolean;
   onOpen: () => void;
 }
 
-const AdventBox = ({ day, imageUrl, style, canOpen, onOpen }: AdventBoxProps) => {
+const AdventBox = ({ day, imageUrl, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isRevealing, setIsRevealing] = useState(false);
+
+  useEffect(() => {
+      if (isDbOpen)
+          setIsOpen(true);
+  }, [isDbOpen]);
 
   const handleClick = () => {
     if (!isOpen && canOpen) {
