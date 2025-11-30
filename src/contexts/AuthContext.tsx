@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
+import { BACKEND_URL } from '@/lib/api';
+
 interface User {
   username: string;
   name: string;
@@ -44,7 +46,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const login = async (username: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch(BACKEND_URL + "/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

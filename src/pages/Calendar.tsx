@@ -4,36 +4,38 @@ import { useAuth } from '@/contexts/AuthContext';
 import Navbar from '@/components/Navbar';
 import Snowfall from '@/components/Snowfall';
 import AdventBox from '@/components/AdventBox';
+import { useQuery } from '@tanstack/react-query';
+import { getMyCalendar } from '@/lib/api';
 
 // Mock daily limit - replace with backend later
 const DAILY_LIMIT = 3;
 
 // Fixed positions for each box (percentage-based, carefully spaced to avoid overlap)
 const boxPositions = [
-  { top: '5%', left: '3%' },     // 1
-  { top: '5%', left: '18%' },    // 2
-  { top: '5%', left: '33%' },    // 3
-  { top: '5%', left: '48%' },    // 4
-  { top: '5%', left: '63%' },    // 5
-  { top: '5%', left: '78%' },    // 6
-  { top: '25%', left: '8%' },    // 7
-  { top: '25%', left: '23%' },   // 8
-  { top: '25%', left: '38%' },   // 9
-  { top: '25%', left: '53%' },   // 10
-  { top: '25%', left: '68%' },   // 11
-  { top: '25%', left: '83%' },   // 12
-  { top: '45%', left: '3%' },    // 13
-  { top: '45%', left: '18%' },   // 14
-  { top: '45%', left: '33%' },   // 15
-  { top: '45%', left: '48%' },   // 16
-  { top: '45%', left: '63%' },   // 17
-  { top: '45%', left: '78%' },   // 18
-  { top: '65%', left: '8%' },    // 19
-  { top: '65%', left: '23%' },   // 20
-  { top: '65%', left: '38%' },   // 21
-  { top: '65%', left: '53%' },   // 22
-  { top: '65%', left: '68%' },   // 23
-  { top: '65%', left: '83%' },   // 24
+  { top: '5%', left: '3%' },
+  { top: '5%', left: '18%' },
+  { top: '5%', left: '33%' },
+  { top: '5%', left: '48%' },
+  { top: '5%', left: '63%' },
+  { top: '5%', left: '78%' },
+  { top: '25%', left: '8%' },
+  { top: '25%', left: '23%' },
+  { top: '25%', left: '38%' },
+  { top: '25%', left: '53%' },
+  { top: '25%', left: '68%' },
+  { top: '25%', left: '83%' },
+  { top: '45%', left: '3%' },
+  { top: '45%', left: '18%' },
+  { top: '45%', left: '33%' },
+  { top: '45%', left: '48%' },
+  { top: '45%', left: '63%' },
+  { top: '45%', left: '78%' },
+  { top: '65%', left: '8%' },
+  { top: '65%', left: '23%' },
+  { top: '65%', left: '38%' },
+  { top: '65%', left: '53%' },
+  { top: '65%', left: '68%' },
+  { top: '65%', left: '83%' },
 ];
 
 // Placeholder images - these can be replaced with actual gift images
@@ -68,20 +70,30 @@ const getImageForDay = (day: number) => {
 };
 
 const Calendar = () => {
-  const { user, isLoading } = useAuth();
+  const { user, isLoading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [openedToday, setOpenedToday] = useState(0);
+
+  const { data, isSuccess } = useQuery({
+      queryKey: ["my-calendar", user?.token],
+      queryFn: async () => {
+          if (!user)
+              throw new Error("No user");
+
+          return getMyCalendar(user.token);
+      },
+      enabled: !!user,
+  });
+  if (isSuccess) console.log(data);
 
   const canOpenMore = openedToday < DAILY_LIMIT;
   const remaining = DAILY_LIMIT - openedToday;
 
   useEffect(() => {
-    console.log(isLoading);
-    console.log(user);
-    if (!isLoading && !user) {
+    if (!authLoading && !user) {
       navigate('/login');
     }
-  }, [user, navigate, isLoading]);
+  }, [user, navigate, authLoading]);
 
   const handleBoxOpen = () => {
     setOpenedToday(prev => prev + 1);
