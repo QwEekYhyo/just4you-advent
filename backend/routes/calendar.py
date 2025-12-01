@@ -2,6 +2,7 @@ import os
 import zipfile
 from io import BytesIO
 from flask import Blueprint, current_app, send_file, request, jsonify
+from datetime import datetime
 
 from middlewares import admin_required, token_required
 from models import Calendar, CalendarDay, User
@@ -239,7 +240,8 @@ def get_image(day):
         if not calendar_day:
             return jsonify({"error": f"Day {day} not found in calendar"}), 404
 
-        # TODO: check if calendar_day is open
+        if not calendar_day.is_open:
+            return jsonify({"error": "Calendar box is not opened, open it to access image"}), 403
 
         if not calendar_day.image_path or not os.path.exists(calendar_day.image_path):
             return jsonify({"error": "Image not found"}), 404
@@ -277,7 +279,10 @@ def open_calendar_day(day):
         if calendar_day.is_open:
             return jsonify({"error": f"Day {day} already opened"}), 409
 
-        # TODO: check if date corresponds
+        present = datetime.now()
+        requested_day = datetime(2025, 12, day)
+        if present < requested_day:
+            return jsonify({"error": f"Cannot open {day}, be more patient"}), 403
 
         calendar_day.is_open = True
         session.commit()
