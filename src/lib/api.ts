@@ -15,12 +15,11 @@ export async function getMyCalendar(token: string): Promise<Calendar> {
     const response = await fetch(BACKEND_URL + "/my-calendar", {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         },
     });
 
-    if (!response.ok)
-        throw new Error("Error while fetching your calendar");
+    if (!response.ok) throw new Error("Error while fetching your calendar");
 
     return response.json();
 }
@@ -29,7 +28,7 @@ export async function openCalendarDay(token: string, day: number): Promise<boole
     const response = await fetch(BACKEND_URL + "/my-calendar/open/" + day, {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
         },
     });
 

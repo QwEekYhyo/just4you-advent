@@ -18,7 +18,7 @@ Log in using user credentials.
 **Body**
 
 ```json
-{"username":"logan","password":"pwd"}
+{ "username": "logan", "password": "pwd" }
 ```
 
 ### Response
@@ -136,11 +136,11 @@ Register a new user.
 
 ```json
 {
-  "username": "logan",
-  "password": "pwd",
-  "name": "Logan",
-  "calendar_id": 1,
-  "is_admin": "false"
+    "username": "logan",
+    "password": "pwd",
+    "name": "Logan",
+    "calendar_id": 1,
+    "is_admin": "false"
 }
 ```
 

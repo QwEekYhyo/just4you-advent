@@ -2,244 +2,256 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
 @layer base {
-  :root {
-    --background: 150 30% 8%;
-    --foreground: 40 30% 95%;
+    :root {
+        --background: 150 30% 8%;
+        --foreground: 40 30% 95%;
 
-    --card: 150 25% 12%;
-    --card-foreground: 40 30% 95%;
+        --card: 150 25% 12%;
+        --card-foreground: 40 30% 95%;
 
-    --popover: 150 25% 12%;
-    --popover-foreground: 40 30% 95%;
+        --popover: 150 25% 12%;
+        --popover-foreground: 40 30% 95%;
 
-    --primary: 0 72% 51%;
-    --primary-foreground: 40 30% 98%;
+        --primary: 0 72% 51%;
+        --primary-foreground: 40 30% 98%;
 
-    --secondary: 150 40% 20%;
-    --secondary-foreground: 40 30% 95%;
+        --secondary: 150 40% 20%;
+        --secondary-foreground: 40 30% 95%;
 
-    --muted: 150 20% 18%;
-    --muted-foreground: 40 15% 65%;
+        --muted: 150 20% 18%;
+        --muted-foreground: 40 15% 65%;
 
-    --accent: 40 60% 70%;
-    --accent-foreground: 150 30% 8%;
+        --accent: 40 60% 70%;
+        --accent-foreground: 150 30% 8%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
 
-    --border: 150 20% 20%;
-    --input: 150 20% 20%;
-    --ring: 0 72% 51%;
+        --border: 150 20% 20%;
+        --input: 150 20% 20%;
+        --ring: 0 72% 51%;
 
-    --radius: 0.5rem;
+        --radius: 0.5rem;
 
-    --christmas-green: 150 40% 25%;
-    --christmas-red: 0 72% 51%;
-    --christmas-gold: 40 70% 55%;
-    --christmas-cream: 40 30% 95%;
-    --snow: 0 0% 100%;
-  }
+        --christmas-green: 150 40% 25%;
+        --christmas-red: 0 72% 51%;
+        --christmas-gold: 40 70% 55%;
+        --christmas-cream: 40 30% 95%;
+        --snow: 0 0% 100%;
+    }
 
-  .dark {
-    --background: 150 30% 8%;
-    --foreground: 40 30% 95%;
-    --card: 150 25% 12%;
-    --card-foreground: 40 30% 95%;
-    --popover: 150 25% 12%;
-    --popover-foreground: 40 30% 95%;
-    --primary: 0 72% 51%;
-    --primary-foreground: 40 30% 98%;
-    --secondary: 150 40% 20%;
-    --secondary-foreground: 40 30% 95%;
-    --muted: 150 20% 18%;
-    --muted-foreground: 40 15% 65%;
-    --accent: 40 60% 70%;
-    --accent-foreground: 150 30% 8%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 150 20% 20%;
-    --input: 150 20% 20%;
-    --ring: 0 72% 51%;
-  }
+    .dark {
+        --background: 150 30% 8%;
+        --foreground: 40 30% 95%;
+        --card: 150 25% 12%;
+        --card-foreground: 40 30% 95%;
+        --popover: 150 25% 12%;
+        --popover-foreground: 40 30% 95%;
+        --primary: 0 72% 51%;
+        --primary-foreground: 40 30% 98%;
+        --secondary: 150 40% 20%;
+        --secondary-foreground: 40 30% 95%;
+        --muted: 150 20% 18%;
+        --muted-foreground: 40 15% 65%;
+        --accent: 40 60% 70%;
+        --accent-foreground: 150 30% 8%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 150 20% 20%;
+        --input: 150 20% 20%;
+        --ring: 0 72% 51%;
+    }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+    * {
+        @apply border-border;
+    }
 
-  body {
-    @apply bg-background text-foreground font-sans;
-  }
+    body {
+        @apply bg-background text-foreground font-sans;
+    }
 }
 
 @layer components {
-  .font-display {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .font-sans {
-    font-family: 'Inter', sans-serif;
-  }
-
-  .snowflake {
-    position: fixed;
-    color: hsl(var(--snow));
-    opacity: 0.6;
-    pointer-events: none;
-    animation: fall linear infinite;
-  }
-
-  @keyframes fall {
-    0% {
-      transform: translateY(-10vh) rotate(0deg);
+    .font-display {
+        font-family: "Playfair Display", serif;
     }
-    100% {
-      transform: translateY(110vh) rotate(360deg);
+
+    .font-sans {
+        font-family: "Inter", sans-serif;
     }
-  }
 
-  .advent-box {
-    perspective: 1000px;
-  }
+    .snowflake {
+        position: fixed;
+        color: hsl(var(--snow));
+        opacity: 0.6;
+        pointer-events: none;
+        animation: fall linear infinite;
+    }
 
-  .advent-box-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-  }
+    @keyframes fall {
+        0% {
+            transform: translateY(-10vh) rotate(0deg);
+        }
+        100% {
+            transform: translateY(110vh) rotate(360deg);
+        }
+    }
 
-  .advent-box-content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 3px solid hsl(var(--christmas-gold));
-    background: hsl(var(--card));
-  }
+    .advent-box {
+        perspective: 1000px;
+    }
 
-  .advent-box-door {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, hsl(var(--christmas-red)) 0%, hsl(0 60% 40%) 100%);
-    border-radius: var(--radius);
-    cursor: pointer;
-    border: 3px solid hsl(var(--christmas-gold));
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform-origin: left center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-    transform-style: preserve-3d;
-  }
+    .advent-box-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+    }
 
-  .advent-box:not(.open):not(.locked) .advent-box-door:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    transform: rotateY(-15deg);
-  }
+    .advent-box-content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 3px solid hsl(var(--christmas-gold));
+        background: hsl(var(--card));
+    }
 
-  .advent-box.open .advent-box-door {
-    transform: rotateY(-120deg);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-  }
+    .advent-box-door {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, hsl(var(--christmas-red)) 0%, hsl(0 60% 40%) 100%);
+        border-radius: var(--radius);
+        cursor: pointer;
+        border: 3px solid hsl(var(--christmas-gold));
+        box-shadow:
+            0 4px 20px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform-origin: left center;
+        transition:
+            transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.3s ease;
+        transform-style: preserve-3d;
+    }
 
-  .advent-box.locked .advent-box-door {
-    cursor: not-allowed;
-    filter: brightness(0.7);
-  }
+    .advent-box:not(.open):not(.locked) .advent-box-door:hover {
+        box-shadow:
+            0 8px 30px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transform: rotateY(-15deg);
+    }
 
-  .ribbon {
-    position: absolute;
-    width: 16px;
-    background: hsl(var(--christmas-gold));
-  }
+    .advent-box.open .advent-box-door {
+        transform: rotateY(-120deg);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    }
 
-  @media (min-width: 768px) {
+    .advent-box.locked .advent-box-door {
+        cursor: not-allowed;
+        filter: brightness(0.7);
+    }
+
     .ribbon {
-      width: 20px;
+        position: absolute;
+        width: 16px;
+        background: hsl(var(--christmas-gold));
     }
-  }
 
-  .ribbon-v {
-    height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+    @media (min-width: 768px) {
+        .ribbon {
+            width: 20px;
+        }
+    }
 
-  .ribbon-h {
-    width: 100%;
-    height: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+    .ribbon-v {
+        height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
-  @media (min-width: 768px) {
     .ribbon-h {
-      height: 20px;
+        width: 100%;
+        height: 16px;
+        top: 50%;
+        transform: translateY(-50%);
     }
-  }
 
-  .bow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 32px;
-    height: 32px;
-    background: hsl(var(--christmas-gold));
-    border-radius: 50%;
-    z-index: 10;
-  }
+    @media (min-width: 768px) {
+        .ribbon-h {
+            height: 20px;
+        }
+    }
 
-  @media (min-width: 768px) {
     .bow {
-      width: 40px;
-      height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 32px;
+        height: 32px;
+        background: hsl(var(--christmas-gold));
+        border-radius: 50%;
+        z-index: 10;
     }
-  }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      opacity: 0;
+    @media (min-width: 768px) {
+        .bow {
+            width: 40px;
+            height: 40px;
+        }
     }
-    50% {
-      opacity: 1;
-    }
-  }
 
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0);
-      opacity: 0;
+    @keyframes pulse-glow {
+        0%,
+        100% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
     }
-    50% {
-      transform: scale(1.3);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0;
-    }
-  }
 
-  .animate-pulse-glow {
-    animation: pulse-glow 1.5s ease-in-out;
-  }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.3);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
 
-  .animate-bounce-in {
-    animation: bounce-in 1.5s ease-out;
-  }
+    .animate-pulse-glow {
+        animation: pulse-glow 1.5s ease-in-out;
+    }
+
+    .animate-bounce-in {
+        animation: bounce-in 1.5s ease-out;
+    }
 }
 
 @layer utilities {
-  .text-gradient-gold {
-    background: linear-gradient(135deg, hsl(var(--christmas-gold)) 0%, hsl(40 80% 65%) 50%, hsl(var(--christmas-gold)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+    .text-gradient-gold {
+        background: linear-gradient(
+            135deg,
+            hsl(var(--christmas-gold)) 0%,
+            hsl(40 80% 65%) 50%,
+            hsl(var(--christmas-gold)) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 }
