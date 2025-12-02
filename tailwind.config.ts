@@ -24,6 +24,9 @@ export default {
             fontFamily: {
                 display: ["Playfair Display", "serif"],
                 sans: ["Inter", "sans-serif"],
+                christmas: ["Christmas", "serif"],
+                christmasCasual: ["ChristmasCasual", "serif"],
+                christmasBig: ["ChristmasBig", "serif"],
             },
             colors: {
                 border: "hsl(var(--border))",

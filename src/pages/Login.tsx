@@ -38,13 +38,13 @@ const Login = () => {
             <ChristmasDecorations />
             <Navbar />
 
-            <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-20">
+            <main className="font-christmasCasual relative z-10 flex flex-col items-center justify-center min-h-screen px-6 pt-20">
                 <div className="w-full max-w-md">
                     <div className="bg-card/80 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-border">
                         {/* Header */}
                         <div className="text-center mb-8">
                             <span className="text-5xl mb-4 block">🎁</span>
-                            <h1 className="font-display text-3xl font-bold text-gradient-gold mb-2">
+                            <h1 className="font-christmas text-6xl font-bold text-gradient-gold mb-2">
                                 Welcome Back
                             </h1>
                             <p className="text-muted-foreground">

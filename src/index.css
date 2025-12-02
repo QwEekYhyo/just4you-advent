@@ -1,8 +1,31 @@
+@font-face {
+    font-family: 'Christmas';
+    src: url('/fonts/ChristmasRegular.woff2') format('woff2'),
+        url('/fonts/ChristmasRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ChristmasCasual';
+    src: url('/fonts/ChristmasCasual.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ChristmasBig';
+    src: url('/fonts/ChristmasBig.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
 @layer base {
     :root {

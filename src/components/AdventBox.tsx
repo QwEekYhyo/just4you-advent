@@ -106,7 +106,7 @@ const AdventBox = ({ day, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) =>
                         <div className="ribbon ribbon-v" />
                         <div className="ribbon ribbon-h" />
                         <div className="bow flex items-center justify-center">
-                            <span className="font-display text-sm sm:text-base md:text-lg lg:text-xl font-bold text-christmas-red">
+                            <span className="text-sm sm:text-base md:text-2xl lg:text-3xl font-bold text-christmas-red">
                                 {day}
                             </span>
                         </div>

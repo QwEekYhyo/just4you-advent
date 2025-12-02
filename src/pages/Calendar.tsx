@@ -98,8 +98,8 @@ const Calendar = () => {
             <Navbar />
 
             {/* Header */}
-            <div className="relative z-10 pt-20 pb-2 text-center flex-shrink-0">
-                <h1 className="font-display text-2xl md:text-3xl font-bold text-gradient-gold">
+            <div className="font-christmasCasual relative z-10 pt-20 pb-2 text-center flex-shrink-0">
+                <h1 className="font-christmas text-3xl md:text-5xl p-2 font-bold text-gradient-gold">
                     Your Advent Calendar
                 </h1>
                 <p className="text-muted-foreground mt-1 text-sm md:text-base">
@@ -116,7 +116,7 @@ const Calendar = () => {
             </div>
 
             {/* Calendar Grid */}
-            <div className="relative z-10 flex-1 w-full px-2 sm:px-4 md:px-8">
+            <div className="font-christmas text-3xl text-center relative z-10 flex-1 w-full px-2 sm:px-4 md:px-8">
                 {Array.from({ length: 24 }, (_, i) => i + 1).map((day) => (
                     <AdventBox
                         key={day}

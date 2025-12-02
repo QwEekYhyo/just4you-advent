@@ -16,31 +16,31 @@ const Index = () => {
                     {/* Decorative element */}
                     <div className="text-6xl mb-4">🎄</div>
 
-                    <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gradient-gold">
+                    <h1 className="font-christmas text-6xl md:text-7xl lg:text-8xl font-bold text-gradient-gold">
                         Welcome to Your
                         <br />
                         Advent Calendar
                     </h1>
 
-                    <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
+                    <p className="font-christmasCasual text-lg md:text-xl text-foreground/80 leading-relaxed">
                         The holiday season is here, and so is a very special surprise waiting just
                         for you. Behind each door lies a carefully chosen treasure, a small token of
                         appreciation to brighten your December days.
                     </p>
 
-                    <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
-                        From the first frost to Christmas Eve, discover 24 moments of joy crafted
+                    <p className="font-christmasCasual text-lg md:text-xl text-foreground/80 leading-relaxed">
+                        From the first frost to Christmas Eve, discover twenty-four moments of joy crafted
                         with love.
                     </p>
 
-                    <p className="text-xl md:text-2xl font-display text-accent italic">
+                    <p className="font-christmasCasual text-xl md:text-2xl font-display text-accent italic">
                         Log in to discover what Logan has chosen especially for you.
                     </p>
 
                     <Button
                         asChild
                         size="lg"
-                        className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                        className="font-christmasCasual md:text-2xl mt-8 bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                     >
                         <Link to="/calendar">Open Your Calendar</Link>
                     </Button>
