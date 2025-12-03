@@ -10,10 +10,10 @@ RUN pip3 install waitress
 
 COPY . .
 
-RUN mkdir /data
-
 ENV DATABASE_URL=sqlite:////data/advent_calendar.db
 ENV UPLOAD_FOLDER=/data/uploads
+
+VOLUME /data
 
 EXPOSE 8080
 

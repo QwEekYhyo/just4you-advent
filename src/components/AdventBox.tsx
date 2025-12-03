@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { getImageOfDay, openCalendarDay } from "@/lib/api";
 
 interface AdventBoxProps {
@@ -13,19 +13,25 @@ interface AdventBoxProps {
 
 const AdventBox = ({ day, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) => {
     const { user } = useAuth();
-    const [isRequestEnabled, setRequestEnabled] = useState(false);
     const [isRequestProcessing, setIsRequestProcessing] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isRevealing, setIsRevealing] = useState(false);
 
-    const { isSuccess } = useQuery({
-        queryKey: [`my-calendar_open_${user?.name}_${day}`, user?.token],
-        queryFn: async () => {
-            if (!user) throw new Error("No user");
+    const openMutation = useMutation({
+        mutationFn: () => openCalendarDay(user!.token, day),
+        onSuccess: () => {
+            setIsRevealing(true);
 
-            return openCalendarDay(user.token, day);
-        },
-        enabled: isRequestEnabled && !!user,
+            setTimeout(() => {
+                setIsOpen(true);
+                onOpen();
+            }, 300);
+
+            setTimeout(() => {
+                setIsRequestProcessing(false);
+                setIsRevealing(false);
+            }, 1500);
+        }
     });
 
     const { data: imgBlob, isSuccess: isImgQuerySuccess } = useQuery({
@@ -45,32 +51,9 @@ const AdventBox = ({ day, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) =>
     const handleClick = () => {
         if (!isOpen && canOpen && !isRequestProcessing) {
             setIsRequestProcessing(true);
-            setRequestEnabled(true);
+            openMutation.mutate();
         }
     };
-
-    useEffect(() => {
-        let openTimeout: NodeJS.Timeout;
-        let stopRevealingTimeout: NodeJS.Timeout;
-
-        if (isSuccess) {
-            setRequestEnabled(false);
-            setIsRevealing(true);
-            openTimeout = setTimeout(() => {
-                setIsOpen(true);
-                onOpen();
-            }, 300);
-            stopRevealingTimeout = setTimeout(() => {
-                setIsRequestProcessing(false);
-                setIsRevealing(false);
-            }, 1500);
-        }
-
-        return () => {
-            clearTimeout(openTimeout);
-            clearTimeout(stopRevealingTimeout);
-        };
-    }, [isSuccess]);
 
     return (
         <>

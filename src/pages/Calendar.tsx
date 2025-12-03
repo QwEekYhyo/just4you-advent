@@ -11,30 +11,30 @@ import { toast } from "sonner";
 
 // Fixed positions for each box (percentage-based, carefully spaced to avoid overlap)
 const boxPositions = [
-    { top: "5%", left: "3%" },
-    { top: "5%", left: "18%" },
-    { top: "5%", left: "33%" },
-    { top: "5%", left: "48%" },
-    { top: "5%", left: "63%" },
-    { top: "5%", left: "78%" },
-    { top: "25%", left: "8%" },
-    { top: "25%", left: "23%" },
-    { top: "25%", left: "38%" },
-    { top: "25%", left: "53%" },
-    { top: "25%", left: "68%" },
-    { top: "25%", left: "83%" },
-    { top: "45%", left: "3%" },
-    { top: "45%", left: "18%" },
     { top: "45%", left: "33%" },
-    { top: "45%", left: "48%" },
+    { top: "5%", left: "48%" },
+    { top: "65%", left: "83%" },
     { top: "45%", left: "63%" },
-    { top: "45%", left: "78%" },
-    { top: "65%", left: "8%" },
+    { top: "25%", left: "8%" },
     { top: "65%", left: "23%" },
     { top: "65%", left: "38%" },
-    { top: "65%", left: "53%" },
+    { top: "25%", left: "53%" },
+    { top: "5%", left: "63%" },
+    { top: "5%", left: "3%" },
+    { top: "45%", left: "48%" },
+    { top: "5%", left: "18%" },
+    { top: "25%", left: "83%" },
+    { top: "45%", left: "78%" },
+    { top: "65%", left: "8%" },
+    { top: "5%", left: "33%" },
+    { top: "45%", left: "3%" },
+    { top: "25%", left: "23%" },
     { top: "65%", left: "68%" },
-    { top: "65%", left: "83%" },
+    { top: "25%", left: "38%" },
+    { top: "5%", left: "78%" },
+    { top: "25%", left: "68%" },
+    { top: "45%", left: "18%" },
+    { top: "65%", left: "53%" }
 ];
 
 const checkDay = (day: number): boolean => {
@@ -106,7 +106,7 @@ const Calendar = () => {
                     {remaining > 0 ? (
                         <>
                             You can open{" "}
-                            <span className="text-christmas-gold font-semibold">{remaining}</span>{" "}
+                            <span className="font-christmas text-2xl text-christmas-gold font-semibold">{remaining}</span>{" "}
                             more box{remaining !== 1 ? "es" : ""} today, {user.name}! 🎁
                         </>
                     ) : (
