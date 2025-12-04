@@ -25,6 +25,8 @@ def login():
         user = session.query(User).filter_by(username=data["username"]).first()
 
         if not user:
+            # Hash password to prevent timing attack
+            ph.hash(data["password"])
             return jsonify({"error": "Invalid credentials"}), 401
 
         # Verify password

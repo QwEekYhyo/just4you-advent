@@ -241,7 +241,12 @@ def get_image(day):
             return jsonify({"error": f"Day {day} not found in calendar"}), 404
 
         if not calendar_day.is_open:
-            return jsonify({"error": "Calendar box is not opened, open it to access image"}), 403
+            return (
+                jsonify(
+                    {"error": "Calendar box is not opened, open it to access image"}
+                ),
+                403,
+            )
 
         if not calendar_day.image_path or not os.path.exists(calendar_day.image_path):
             return jsonify({"error": "Image not found"}), 404
