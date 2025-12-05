@@ -29,8 +29,8 @@ const Index = () => {
                     </p>
 
                     <p className="font-christmasCasual text-lg md:text-xl text-foreground/80 leading-relaxed">
-                        From the first frost to Christmas Eve, discover twenty-four moments of joy crafted
-                        with love.
+                        From the first frost to Christmas Eve, discover twenty-four moments of joy
+                        crafted with love.
                     </p>
 
                     <p className="font-christmasCasual text-xl md:text-2xl font-display text-accent italic">

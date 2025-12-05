@@ -34,7 +34,7 @@ const boxPositions = [
     { top: "5%", left: "78%" },
     { top: "25%", left: "68%" },
     { top: "45%", left: "18%" },
-    { top: "65%", left: "53%" }
+    { top: "65%", left: "53%" },
 ];
 
 const checkDay = (day: number): boolean => {
@@ -106,7 +106,9 @@ const Calendar = () => {
                     {remaining > 0 ? (
                         <>
                             You can open{" "}
-                            <span className="font-christmas text-2xl text-christmas-gold font-semibold">{remaining}</span>{" "}
+                            <span className="font-christmas text-2xl text-christmas-gold font-semibold">
+                                {remaining}
+                            </span>{" "}
                             more box{remaining !== 1 ? "es" : ""} today, {user.name}! 🎁
                         </>
                     ) : (

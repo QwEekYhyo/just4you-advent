@@ -1,23 +1,24 @@
 @font-face {
-    font-family: 'Christmas';
-    src: url('/fonts/ChristmasRegular.woff2') format('woff2'),
-        url('/fonts/ChristmasRegular.woff') format('woff');
+    font-family: "Christmas";
+    src:
+        url("/fonts/ChristmasRegular.woff2") format("woff2"),
+        url("/fonts/ChristmasRegular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'ChristmasCasual';
-    src: url('/fonts/ChristmasCasual.ttf') format('truetype');
+    font-family: "ChristmasCasual";
+    src: url("/fonts/ChristmasCasual.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'ChristmasBig';
-    src: url('/fonts/ChristmasBig.ttf') format('truetype');
+    font-family: "ChristmasBig";
+    src: url("/fonts/ChristmasBig.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;

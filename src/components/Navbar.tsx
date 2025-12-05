@@ -15,7 +15,10 @@ const Navbar = () => {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
             <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-                <Link to="/" className="font-christmasBig text-4xl font-semibold text-gradient-gold">
+                <Link
+                    to="/"
+                    className="font-christmasBig text-4xl font-semibold text-gradient-gold"
+                >
                     Just4You Advent
                 </Link>
 
@@ -34,7 +37,9 @@ const Navbar = () => {
                         asChild
                         className="text-foreground hover:text-primary hover:bg-primary/10"
                     >
-                        <Link to="/login" className="text-xl">Log in</Link>
+                        <Link to="/login" className="text-xl">
+                            Log in
+                        </Link>
                     </Button>
                 )}
             </div>
