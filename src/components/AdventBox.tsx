@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "@/contexts/AuthContext";
 import { useMutation, useQuery } from "@tanstack/react-query";
+
+import ImageLightbox from "./ImageLightbox";
+import { useAuth } from "@/contexts/AuthContext";
 import { getImageOfDay, openCalendarDay } from "@/lib/api";
 
 interface AdventBoxProps {
@@ -16,6 +18,7 @@ const AdventBox = ({ day, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) =>
     const [isRequestProcessing, setIsRequestProcessing] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [isRevealing, setIsRevealing] = useState(false);
+    const [iseLightboxOpen, setIsLightboxOpen] = useState(false);
 
     const openMutation = useMutation({
         mutationFn: () => openCalendarDay(user!.token, day),
@@ -31,7 +34,7 @@ const AdventBox = ({ day, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) =>
                 setIsRequestProcessing(false);
                 setIsRevealing(false);
             }, 1500);
-        }
+        },
     });
 
     const { data: imgBlob, isSuccess: isImgQuerySuccess } = useQuery({
@@ -49,7 +52,12 @@ const AdventBox = ({ day, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) =>
     }, [isDbOpen]);
 
     const handleClick = () => {
-        if (!isOpen && canOpen && !isRequestProcessing) {
+        if (isOpen) {
+            setIsLightboxOpen(true);
+            return;
+        }
+
+        if (canOpen && !isRequestProcessing) {
             setIsRequestProcessing(true);
             openMutation.mutate();
         }
@@ -67,8 +75,15 @@ const AdventBox = ({ day, style, isDbOpen, canOpen, onOpen }: AdventBoxProps) =>
                 </div>
             )}
 
+            <ImageLightbox
+                imageUrl={isImgQuerySuccess ? URL.createObjectURL(imgBlob) : "placeholderimg"}
+                alt={`Day ${day} surprise`}
+                isOpen={iseLightboxOpen}
+                onClose={() => setIsLightboxOpen(false)}
+            />
+
             <div
-                className={`advent-box absolute w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 ${isOpen ? "open" : ""} ${!canOpen && !isOpen ? "locked" : ""}`}
+                className={`advent-box absolute w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 ${isOpen ? "open cursor-pointer" : ""} ${!canOpen && !isOpen ? "locked" : ""}`}
                 style={style}
                 onClick={handleClick}
             >
